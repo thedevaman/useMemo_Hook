@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState,useMemo } from 'react';
+import Ref from './Ref';
 
 function App() {
   const [count,setCount] = useState(0);
@@ -20,6 +21,9 @@ function App() {
       <h2>{multiCountMemo}</h2>
       <button onClick={()=>setCount(count+1)}>Update Count</button>
       <button onClick={()=>setItem(item*10)}>Update Item</button>
+      <hr></hr>
+      <h1>Ref</h1>
+      <Ref/>
     </div>
   );
 }
