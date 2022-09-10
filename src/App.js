@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState,useMemo } from 'react';
+import { useState,useMemo, useRef } from 'react';
 import Ref from './Ref';
+import User from './User';
 
 function App() {
   const [count,setCount] = useState(0);
@@ -12,6 +13,14 @@ function App() {
     console.warn("multicount")
     return count*5
   },[count])   //only count is called then only multicount run
+
+let inputRef = useRef(null);
+function updateInput()
+{
+  inputRef.current.value="1000"
+  inputRef.current.style.color="red"
+  inputRef.current.focus()
+}
 
   return (
     <div className="App">
@@ -24,8 +33,11 @@ function App() {
       <hr></hr>
       <h1>Ref</h1>
       <Ref/>
+      <hr></hr>
+      <User ref={inputRef}/>
+      <button onClick={updateInput}>Update Input box of child comp.</button>
     </div>
   );
 }
-
+ 
 export default App;
