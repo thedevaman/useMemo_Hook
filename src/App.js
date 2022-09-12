@@ -21,6 +21,18 @@ function updateInput()
   inputRef.current.style.color="red"
   inputRef.current.focus()
 }
+let [val,setVal] = useState("000");
+
+let ref = useRef(null)
+let ref2 = useRef(null)
+
+function submitform(e){
+e.preventDefault()
+console.warn("inputed data 1",ref.current.value)
+console.warn("inputed data 2",ref2.current.value)
+let input3=document.getElementById("input3").value
+console.warn("inputed data 3",input3)
+}
 
   return (
     <div className="App">
@@ -36,6 +48,18 @@ function updateInput()
       <hr></hr>
       <User ref={inputRef}/>
       <button onClick={updateInput}>Update Input box of child comp.</button>
+      <hr></hr>
+      <h1>Controlled Component</h1>
+      <input type="text" value={val} onChange={(e)=>setVal(e.target.value)}/>
+      <hr></hr>
+      <h1>Uncontrolled Component</h1>
+      <form onSubmit={submitform}>
+      <input type="text" ref={ref}/><br/><br/>
+      <input type="text" ref={ref2}/><br/><br/>
+      <input type="text" id="input3" /><br/><br/>
+      <button>Submit</button>
+      </form>
+
     </div>
   );
 }
