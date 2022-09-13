@@ -34,6 +34,7 @@ let input3=document.getElementById("input3").value
 console.warn("inputed data 3",input3)
 }
 
+
   return (
     <div className="App">
       <h1>useMemo Hooks</h1>
@@ -59,9 +60,38 @@ console.warn("inputed data 3",input3)
       <input type="text" id="input3" /><br/><br/>
       <button>Submit</button>
       </form>
-
+      <hr></hr>
+      <h1>HOC</h1>
+      {/* <HOCCounter />
+      <HOCCounter /> */}
+      <HOCred cmp={HOCCounter}/>
+      <HOCgreen cmp={HOCCounter}/>
+      <HOCBlue cmp={HOCCounter}/>
     </div>
   );
+}
+
+function HOCred(props){
+  return <h2 style={{backgroundColor:'red',width:100}}><props.cmp/></h2>
+}
+
+function HOCgreen(props){
+  return <h2 style={{backgroundColor:'green',width:100}}><props.cmp/></h2>
+}
+
+function HOCBlue(props){
+  return <h2 style={{backgroundColor:'blue',width:100}}><props.cmp/></h2>
+}
+
+
+
+function HOCCounter()
+{
+  const[count,setCount]=useState(0)
+  return<div>
+    <h3>{count}</h3>
+    <button onClick={()=>setCount(count+1)}>Update</button>
+  </div>
 }
  
 export default App;
